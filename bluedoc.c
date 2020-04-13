@@ -1066,7 +1066,7 @@ void editorProcessKeypress() {
   quit_times = BLUE_QUIT_TIMES;
 }
 
-//init
+//init TODO change thi word, I hate it
 void initEditor() {
   E.cx = 0;
   E.cy = 0;
@@ -1102,30 +1102,4 @@ int main(int argc, char *argv[]) {
   
   return 0;
 }
-
-
-/***
-int main() {
-  enableRawMode();
-  
-  while (1) {
-    char c = '\0';
-    if (read(STDIN_FILENO, &c, 1) == -1 && errno != EAGAIN) die("read");
-    if (iscntrl(c)) {
-      printf("%d\r\n", c);
-    } else {
-      printf("%d ('%c')\r\n", c, c);
-    }
-    if (c == CTRL_KEY('q')) break;
-  }
-  
-  return 0;
-}
-***/
-
-//524 before text editing available :(
-//770 before search function
-//818 before syntax highlighting
-//902 before file type
-//1093 after basic functions completed
-//1130 after completion
+// You really read all this garbage?
