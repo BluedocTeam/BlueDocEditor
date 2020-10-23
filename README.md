@@ -7,11 +7,11 @@ works with .txt .note .notes and .html files natively
 with future support coming
 
  current keywords are 
-   date ? problem TODO note who where what,
+  ``` date ? problem TODO note who where what,
    year solve i Why Who Where What %
   
   >> Gabe Gabriel gabe gabriel error +
-   - / * test
+   - / * test```
    
  layout allows for simple implimentation of CTRL keys 
   or other special keys.
