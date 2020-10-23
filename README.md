@@ -8,9 +8,9 @@ with future support coming
 
  current keywords are 
    ```"date", "?", "problem", "TODO", "note", "who", "where", "what",
-   "year", "solve", "i", "Why", "Who", "Where", "What", "%",```
+   "year", "solve", "i", "Why", "Who", "Where", "What", "%",
   
-  ``` " >>|", "Gabe|", "Gabriel|", "gabe|", "gabriel|", "error|", "+|",
+  " >>|", "Gabe|", "Gabriel|", "gabe|", "gabriel|", "error|", "+|",
    "-|", "/|", "*|", "test|"
    ```
    layout allows for simple implimentation of CTRL keys 
