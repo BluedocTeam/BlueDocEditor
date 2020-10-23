@@ -16,3 +16,10 @@ with future support coming
     or other special keys.
     
 are there still tons of mistakes? yeah.    
+
+
+Simply un-zip in your /home/user
+```sudo chmod +x Bluedocinstaller.sh```
+```./Bluedocinstaller.sh```
+Say yes to both
+And enjoy BlueDoc!
