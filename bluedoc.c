@@ -4,8 +4,8 @@
 |*  BlueDoc Text Editor was made   |
 |*    for use in note taking,      |
 |~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~*/
-// _italics_ **bold** * list  
-//```code```  >quotes 
+// _italics_ **bold**   
+//```code```  >>quotes * list
 
 
 // Stuff I prolly need included?
@@ -17,6 +17,7 @@
 #include <ctype.h>
 #include <errno.h>
 #include <fcntl.h>
+#include <string.h>
 #include <stdio.h>
 #include <stdarg.h>
 #include <stdlib.h>
@@ -28,7 +29,7 @@
 
 //defines
 
-#define BLUE_VERSION "0.0.2"
+#define BLUE_VERSION "20.09.14.0"
 #define BLUE_TAB_STOP 8
 #define BLUE_QUIT_TIMES 2
 
@@ -103,13 +104,13 @@ struct editorConfig {
 struct editorConfig E;
 
 //filetypes
-char *C_HL_extensions[] = { ".notes", ".html", ".txt", ".note", NULL };
+char *C_HL_extensions[] = { ".notes", ".html", ".txt", ".note", ".c", NULL };
 char *C_HL_keywords[] = {
   "date", "?", "problem", "TODO", "note", "who", "where", "what",
   "year", "solve", "i", "Why", "Who", "Where", "What", "%",
   
   ">>|", "Gabe|", "Gabriel|", "gabe|", "gabriel|", "error|", "+|",
-  "-|", "/|", "*|", "test|", NULL
+  "-|", "/|", "*|", "=|", NULL
 };
 
 struct editorSyntax HLDB[] = {
@@ -413,6 +414,9 @@ int editorRowCxToRx(erow *row, int cx) {
   }
   return rx;
 }
+
+
+
 
 //tumadreeraunhombre
 int editorRowRxToCx(erow *row, int rx) {
@@ -984,12 +988,23 @@ void editorProcessKeypress() {
       editorSetStatusMessage("Use ctrl shift v");
       break;
       
-    case CTRL_KEY('x'):
-      editorSetStatusMessage("Use cntrl q to exit");
-      break;
-      
     case CTRL_KEY('t'):
       editorSetStatusMessage("date ? problem TODO note who where what year solve i Why Who Where What %");
+      break;
+      
+    case CTRL_KEY('x'):
+      editorRowInsertChar(&E.row[E.cy], E.cx, '|');
+      editorRowInsertChar(&E.row[E.cy], E.cx, 32);
+      editorRowInsertChar(&E.row[E.cy], E.cx, 32);
+      editorRowInsertChar(&E.row[E.cy], E.cx, 32);
+      editorRowInsertChar(&E.row[E.cy], E.cx, 32);
+      editorRowInsertChar(&E.row[E.cy], E.cx, '>');
+      E.cx++;
+      E.cx++;
+      E.cx++;
+      E.cx++;
+      E.cx++;
+      E.cx++;
       break;
       
     case HOME_KEY:
@@ -1042,13 +1057,13 @@ void editorProcessKeypress() {
     default:
       editorInsertChar(c);
       break;
-      //weryuipadgjkzbn
+      //weryoupadgjkzbn
     case CTRL_KEY('w'):
     case CTRL_KEY('e'):
     case CTRL_KEY('r'):
     case CTRL_KEY('y'):
+    case CTRL_KEY('o'):
     case CTRL_KEY('u'):
-    case CTRL_KEY('i'):
     case CTRL_KEY('p'):
     case CTRL_KEY('a'):
     case CTRL_KEY('d'):
@@ -1066,7 +1081,7 @@ void editorProcessKeypress() {
   quit_times = BLUE_QUIT_TIMES;
 }
 
-//init TODO change thi word, I hate it
+//init
 void initEditor() {
   E.cx = 0;
   E.cy = 0;
@@ -1079,7 +1094,7 @@ void initEditor() {
   E.filename = NULL;
   E.statusmsg[0] = '\0';
   E.statusmsg_time = 0;
-  E.syntax = NULL;
+  E.syntax == NULL;
     
   if (getWindowSize(&E.screenrows, &E.screencols) == -1) die("getWindowSize");
     E.screenrows -= 2;
@@ -1102,4 +1117,9 @@ int main(int argc, char *argv[]) {
   
   return 0;
 }
-// You really read all this garbage?
+
+//524 before text editing available :(
+//770 before search function
+//818 before syntax highlighting
+//902 before file type
+//1093 after basic functions completed
